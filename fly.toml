@@ -1,5 +1,9 @@
 app = "webuf-test"
 
+[build]
+  # يمكن تركها فارغة إذا كنت ستبني محليًا
+  builder = "heroku/buildpacks:20"
+
 [[services]]
   internal_port = 8080
   protocol = "tcp"
@@ -7,7 +11,3 @@ app = "webuf-test"
   [[services.ports]]
     port = 80
     handlers = ["http"]
-
-  [[services.static]]
-    source = "dist"
-    target = "/"
