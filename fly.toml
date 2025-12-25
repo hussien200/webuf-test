@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # fly.toml app configuration file generated for webuf-test on 2025-12-25T20:12:48Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
@@ -21,3 +22,17 @@ primary_region = 'fra'
   cpu_kind = 'shared'
   cpus = 1
   memory_mb = 1024
+=======
+app = "webuf-test"  # اسم التطبيق على Fly
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[build]
+  builder = "heroku/buildpacks:20"
+
+[[statics]]
+  guest_path = "/"       # مسار ملفات السيرفر
+  url_prefix = "/"       # الرابط الأساسي
+  directory = "dist"     # ← هذا المجلد النهائي بعد npm run build
+>>>>>>> 243b5f9 (first commit4)
