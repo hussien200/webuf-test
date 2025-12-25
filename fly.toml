@@ -1,12 +1,13 @@
-app = "webuf-test"  # اسم التطبيق على Fly
-kill_signal = "SIGINT"
-kill_timeout = 5
-processes = []
+app = "webuf-test"
 
-[build]
-  builder = "heroku/buildpacks:20"
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
 
-[[statics]]
-  guest_path = "/"       # مسار ملفات السيرفر
-  url_prefix = "/"       # الرابط الأساسي
-  directory = "dist"     # ← هذا المجلد النهائي بعد npm run build
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.static]]
+    source = "dist"
+    target = "/"
