@@ -1,0 +1,12 @@
+app = "webuf-test"  # اسم التطبيق على Fly
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[build]
+  builder = "heroku/buildpacks:20"
+
+[[statics]]
+  guest_path = "/"       # مسار ملفات السيرفر
+  url_prefix = "/"       # الرابط الأساسي
+  directory = "dist"     # ← هذا المجلد النهائي بعد npm run build
